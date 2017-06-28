@@ -47,15 +47,15 @@ public class DepositoUnico {
             rendimentoInflacao = rendimentoInflacao * inflacao;
         }
 
+        result.setOriginalRequest(investimento);
         result.setDepositoInicial(investimento.getDepositoInicial());
-        result.setValorAcumulado(rendimentoAcumulado);
-        result.setInflacaoAcumulada(rendimentoInflacao);
-        result.setValorAcumuladoMenosInflacaoAcumulada(rendimentoAcumulado - rendimentoInflacao);
+        result.getBruto().setValorAcumulado(rendimentoAcumulado);
+        result.getBruto().setInflacaoAcumulada(rendimentoInflacao);
+        result.getBruto().setValorAcumuladoMenosInflacaoAcumulada(rendimentoAcumulado - rendimentoInflacao);
 
         double coeficienteValorizacao = rendimentoAcumulado / rendimentoInflacao;
-        result.setValorAcumuladoCorrigidoInflacao(investimento.getDepositoInicial() * coeficienteValorizacao);
-
-        result.setRendimentoReal(result.getValorAcumuladoCorrigidoInflacao() - result.getDepositoInicial());
+        result.getCorrigido().setValorAcumuladoCorrigidoInflacao(investimento.getDepositoInicial() * coeficienteValorizacao);
+        result.getCorrigido().setRendimentoReal(result.getCorrigido().getValorAcumuladoCorrigidoInflacao() - result.getDepositoInicial());
 
         result.setPorcentagemInflacaoAnual((inflacao - 1) * 12 * 100);
         result.setPorcentagemInflacaoMensal((inflacao - 1) * 100);

@@ -16,29 +16,13 @@ import java.util.List;
 @XmlType(namespace = "calcularRendimentoDepositoUnicoResposta")
 public class Response {
 
+    ResponseBruto bruto;
+
+    ResponseCorrigido corrigido;
+
     @XmlElement(required=true)
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double depositoInicial;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumulado;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double inflacaoAcumulada;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumuladoMenosInflacaoAcumulada;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumuladoCorrigidoInflacao;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double rendimentoReal;
 
     @XmlElement(required=false)
     Integer anos;
@@ -62,5 +46,12 @@ public class Response {
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double porcentagemInflacaoMensal;
 
+    Request originalRequest;
+
     List<RendimentoMensalDto> mes;
+
+    public Response() {
+        this.bruto = new ResponseBruto();
+        this.corrigido = new ResponseCorrigido();
+    }
 }
