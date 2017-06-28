@@ -2,6 +2,7 @@ package br.com.fhu.investimento.ws.dto.rendimento.depositoinicialcommensal;
 
 import br.com.fhu.investimento.ws.adapter.ValorAdapter;
 import br.com.fhu.investimento.ws.dto.RendimentoMensalDto;
+import br.com.fhu.investimento.ws.dto.rendimento.depositoinicialcommensal.Request;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,10 @@ import java.util.List;
 @XmlType(namespace = "calcularRendimentoDepositoInicialComMensalResposta")
 public class Response {
 
+    ResponseBruto bruto;
+
+    ResponseCorrigido corrigido;
+
     @XmlElement(required=true)
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double depositoInicial;
@@ -23,26 +28,6 @@ public class Response {
     @XmlElement(required=true)
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double depositoMensal;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumulado;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double inflacaoAcumulada;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumuladoMenosInflacaoAcumulada;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAcumuladoCorrigidoInflacao;
-
-    @XmlElement(required=true)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double rendimentoReal;
 
     @XmlElement(required=false)
     Integer anos;
@@ -66,5 +51,12 @@ public class Response {
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double porcentagemInflacaoMensal;
 
+    Request originalRequest;
+
     List<RendimentoMensalDto> mes;
+
+    public Response() {
+        this.bruto = new ResponseBruto();
+        this.corrigido = new ResponseCorrigido();
+    }
 }
