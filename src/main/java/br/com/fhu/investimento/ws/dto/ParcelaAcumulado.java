@@ -13,19 +13,18 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
-public class MesFinanciamento {
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Integer mesAtual;
+public class ParcelaAcumulado {
 
     @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorParcela;
-    
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double saldoDevedor;
-    
-    @XmlJavaTypeAdapter(ValorAdapter.class)
     Double totalPago;
-    
+
     @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double valorAbatido;
+    Double totalJurosPago;
+
+    @XmlJavaTypeAdapter(ValorAdapter.class)
+    Double totalPagoComJuros;
+
+    public ParcelaAcumulado() {
+
+    }
 }

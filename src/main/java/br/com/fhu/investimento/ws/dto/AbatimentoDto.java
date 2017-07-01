@@ -13,15 +13,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AbatimentoDto {
-    @XmlElement(required=true)
+    @XmlElement(required=false, defaultValue="0")
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double valorAbatimentoFgtsACadaDoisAnos;
 
-    @XmlElement(required=true)
+    @XmlElement(required=false, defaultValue="0")
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double valorAbatimentoPorMes;
     
-    @XmlElement(required=true)
+    @XmlElement(required=false, defaultValue="0")
     @XmlJavaTypeAdapter(ValorAdapter.class)
     Double valorAbatimentoPorAno;
 }

@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 public class ValorAdapter extends XmlAdapter<Double, Double> {
     @Override
     public Double unmarshal(Double v) throws Exception {
+        if (v == null) {
+            v = new Double(0);
+        }
         return v;
     }
 

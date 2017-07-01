@@ -12,6 +12,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.ws.ResponseWrapper;
 
 @WebService
@@ -34,11 +35,11 @@ public class InvestimentoService {
 
         return new DepositoInicialComMensal().calcular(investimento);
     }
-    
+
     @WebMethod()
-    @ResponseWrapper(localName = "calcularTempoFinanciamentoSAC")
+    @ResponseWrapper(localName = "calcularTempoFinanciamentoSACResposta")
     @WebResult(name = "Resultado")
-    public ResponseTempoFinanciamento calcularTempoFinanciamentoSAC(@WebParam(name="financiamento") RequestTempoFinanciamento financiamento) {
+    public ResponseTempoFinanciamento calcularTempoFinanciamentoSAC(@WebParam(name="financiamento") @XmlElement(required=true,nillable=false) RequestTempoFinanciamento financiamento) {
         System.out.println("Chamando calcularTempoFinanciamentoSAC");
 
         return new TempoFinanciamentoSac().calcular(financiamento);

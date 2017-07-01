@@ -1,6 +1,6 @@
 package br.com.fhu.investimento.ws.dto;
 
-import br.com.fhu.investimento.ws.adapter.ValorAdapter;
+import br.com.fhu.investimento.ws.adapter.PorcentagemAdapter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,21 +12,16 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @Setter
-public class TempoDto {
+public class InflacaoDto {
     @XmlElement(required=false)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double meses;
-    
+    @XmlJavaTypeAdapter(PorcentagemAdapter.class)
+    Double anual;
+
     @XmlElement(required=false)
-    @XmlJavaTypeAdapter(ValorAdapter.class)
-    Double anos;
+    @XmlJavaTypeAdapter(PorcentagemAdapter.class)
+    Double mensal;
 
-    public TempoDto() {
+    public InflacaoDto() {
 
-    }
-
-    public TempoDto(Double meses, Double anos) {
-        this.meses = meses;
-        this.anos = anos;
     }
 }

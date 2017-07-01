@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import br.com.fhu.investimento.ws.adapter.PorcentagemAdapter;
 import br.com.fhu.investimento.ws.adapter.ValorAdapter;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +15,10 @@ import lombok.Setter;
 @Setter
 public class JurosDto {
     @XmlElement(required=false)
+    @XmlJavaTypeAdapter(PorcentagemAdapter.class)
     Double anual;
     
     @XmlElement(required=false)
+    @XmlJavaTypeAdapter(PorcentagemAdapter.class)
     Double mensal;
 }
